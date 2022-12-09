@@ -152,6 +152,7 @@ namespace TR
             }
             builder.EndTable();
             doc.Save("C:\\reports\\RunsReport " + DateTime.Today.ToString("d") + ".docx");
+            MessageBox.Show("Отчет сохранен по пути: C:\\reports\\");
         }
     }
 }

@@ -125,6 +125,7 @@ namespace TR
             }
             builder.EndTable();
             doc.Save("C:\\reports\\StoprouteReport " + DateTime.Today.ToString("d") + ".docx");
+            MessageBox.Show("Отчет сохранен по пути: C:\\reports\\");
         }
     }
 }
