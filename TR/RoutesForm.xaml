@@ -1,0 +1,58 @@
+﻿<Window x:Class="TR.RoutesForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TR"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Title="RoutesForm" Height="500" Width="950">
+    <Window.Resources>
+        <local:Converter x:Key="Converter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Content=" Главное меню " HorizontalAlignment="Left" Background="White" Height="39" Width="auto" FontWeight="Bold" Click="Button_MainWindow" VerticalAlignment="Top"/>
+        <Button Grid.Row="0" Content=" Отчет " HorizontalAlignment="Left" Background="White" Height="39" Width="auto" FontWeight="Bold" Click="Button_Report" VerticalAlignment="Top" Margin="100,1,0,0"/>
+        <Label Grid.Row="0" Content="Маршруты" HorizontalAlignment="Center" VerticalAlignment="Center" Height="auto" Width="auto" FontSize="20" FontWeight="Bold"/>
+        <DataGrid Grid.Row="1" AutoGenerateColumns="False" x:Name="routeGrid" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding RouteStart, UpdateSourceTrigger=LostFocus}" Header="Пункт отправления" Width="120"/>
+                <DataGridTextColumn Binding="{Binding RouteEnd, UpdateSourceTrigger=LostFocus}" Header="Пункт назначения" Width="120"/>
+                <DataGridTemplateColumn Header="Время в пути ч:м">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <wpfx:TimePicker Text="{Binding TravelTime, UpdateSourceTrigger=LostFocus, Converter={StaticResource Converter}}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Изменить" Click="Button_Change" Tag="{Binding Id}" Background="#FFF19F0D"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Удалить" Click="Button_Delete" Tag="{Binding Id}" Background="#FFF96C6C"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="textRouteStart" HorizontalAlignment="Left" Margin="15,5,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="33" FontSize="18" FontWeight="Bold"/>
+        <TextBox x:Name="textRouteEnd" HorizontalAlignment="Left" Margin="220,5,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="33" FontSize="18" FontWeight="Bold"/>
+        <wpfx:TimePicker x:Name="textTravelTime" HorizontalAlignment="Left" Margin="425,5,0,0" Grid.Row="2" VerticalAlignment="Top" Width="128" Height="33" FontSize="18" FontWeight="Bold"/>
+        <Button Content=" Добавить " HorizontalAlignment="Left" Margin="667,5,0,0" Grid.Row="2" VerticalAlignment="Top" Height="43" Width="123" FontSize="20" FontWeight="Bold" Background="#FF557D4F" Click="Button_Add"/>
+        <Label Content="Пункт отправления" HorizontalAlignment="Left" Margin="15,43,0,0" Grid.Row="2" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Пункт назначения" HorizontalAlignment="Left" Margin="220,43,0,0" Grid.Row="2" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Время в пути ч:м" HorizontalAlignment="Left" Margin="425,43,0,0" Grid.Row="2" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" RenderTransformOrigin="-0.269,0.979"/>
+    </Grid>
+</Window>

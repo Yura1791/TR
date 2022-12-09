@@ -1,0 +1,26 @@
+﻿<Window x:Class="TR.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TR"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="500" Width="950">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="btnRuns" Grid.Column="0" Grid.Row="0" Content="Рейсы" FontSize="36" FontWeight="Bold" Click="btnRuns_Click"/>
+        <Button x:Name="btnRoutes" Grid.Column="1" Grid.Row="0" Content="Маршруты" FontSize="36" FontWeight="Bold" Click="btnRoutes_Click"/>
+        <Button x:Name="btnStoproutes" Grid.Column="0" Grid.Row="1" Content="Остановки" FontSize="36" FontWeight="Bold" Click="btnStoproutes_Click"/>
+        <Button x:Name="btnBuses" Grid.Column="1" Grid.Row="1" Content="Автобусы" FontSize="36" FontWeight="Bold" Click="btnBuses_Click"/>
+        <Button x:Name="btnReport" Grid.Row="2" Grid.ColumnSpan="2" Content="Сформировать общий отчет" FontSize="36" FontWeight="Bold" Click="btnReport_Click"/>
+    </Grid>
+</Window>

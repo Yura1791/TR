@@ -1,0 +1,45 @@
+﻿<Window x:Class="TR.StoproutesForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TR"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="StoproutesForm" Height="500" Width="950">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Content=" Главное меню " HorizontalAlignment="Left" Background="White" Height="39" Width="auto" FontWeight="Bold" Click="Button_MainWindow" VerticalAlignment="Top"/>
+        <Button Grid.Row="0" Content=" Отчет " HorizontalAlignment="Left" Background="White" Height="39" Width="auto" FontWeight="Bold" Click="Button_Report" VerticalAlignment="Top" Margin="100,1,0,0"/>
+        <Label Grid.Row="0" Content="Остановки" HorizontalAlignment="Center" VerticalAlignment="Center" Height="auto" Width="auto" FontSize="20" FontWeight="Bold"/>
+        <DataGrid Grid.Row="1" AutoGenerateColumns="False" x:Name="stoprouteGrid" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding NameStop, UpdateSourceTrigger=LostFocus}" Header="Название" Width="120"/>
+                <DataGridTextColumn Binding="{Binding Routeid, UpdateSourceTrigger=LostFocus}" Header="Маршрут" Width="120"/>
+                <DataGridTemplateColumn Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Изменить" Click="Button_Change" Tag="{Binding Id}" Background="#FFF19F0D"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Удалить" Click="Button_Delete" Tag="{Binding Id}" Background="#FFF96C6C"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="textNameStop" HorizontalAlignment="Left" Margin="15,5,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="33" FontSize="18" FontWeight="Bold"/>
+        <TextBox x:Name="textRouteid" HorizontalAlignment="Left" Margin="220,5,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="33" FontSize="18" FontWeight="Bold"/>
+        <Button Content=" Добавить " HorizontalAlignment="Left" Margin="667,5,0,0" Grid.Row="2" VerticalAlignment="Top" Height="43" Width="123" FontSize="20" FontWeight="Bold" Background="#FF557D4F" Click="Button_Add"/>
+        <Label Content="Остановка" HorizontalAlignment="Left" Margin="15,43,0,0" Grid.Row="2" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Маршрут" HorizontalAlignment="Left" Margin="220,43,0,0" Grid.Row="2" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+    </Grid>
+</Window>
